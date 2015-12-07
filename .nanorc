@@ -1,0 +1,14 @@
+set autoindent
+set const
+set historylog
+set morespace
+set mouse
+set noconvert
+set nonewlines
+set nowrap
+set preserve
+set smarthome
+set smooth
+set softwrap
+set tabsize 8
+set whitespace "»."
