@@ -1,0 +1,24 @@
+#!/bin/bash
+
+sudo apt-get update && \
+	sudo apt-get upgrade -y && \
+	sudo apt-get dist-upgrade -y && \
+	sudo apt-get install -y \
+		adobe-flashplugin \
+		fping \
+		git \
+		hexchat \
+		i2c-tools \
+		iperf \
+		lm-sensors \
+		mc \
+		network-manager-openvpn-gnome \
+		powertop \
+		shellcheck \
+		skype \
+		subversion \
+		tcpdump \
+		vlc \
+		wireshark \
+		zsh \
+		|| exit 1
