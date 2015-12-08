@@ -14,6 +14,7 @@ sudo apt-get update && \
 		mc \
 		network-manager-openvpn-gnome \
 		powertop \
+		python-pygments \
 		shellcheck \
 		skype \
 		subversion \
