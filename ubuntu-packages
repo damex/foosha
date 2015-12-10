@@ -10,6 +10,7 @@ sudo apt-get update && \
 		git \
 		hexchat \
 		i2c-tools \
+		iotop \
 		iperf \
 		lm-sensors \
 		mc \
