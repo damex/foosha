@@ -1,0 +1,12 @@
+#!/bin/sh
+
+_binary="${1}"
+
+[[ "$(whoami)" != "root" ]] && echo "Please get root privileges to install skype." && exit 1
+[[ ! "${1}" ]] && echo "Please specify path to skype rpm package as \${1}" && exit 1
+
+if [[ -f "${_binary}" ]] ; then
+	dnf install -yv \
+		libXv.i686 libXScrnSaver.i686 qt.i686 qt-x11.i686 pulseaudio-libs.i686 pulseaudio-libs-glib2.i686 alsa-plugins-pulseaudio.i686 qtwebkit.i686
+	rpm -i "${_binary}"
+fi
