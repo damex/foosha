@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[[ "$(whoami)" != "root" ]] && echo "Please get root privileges to install packages." && exit 1
+
 dnf install -yv \
 	fping \
 	hexchat \
@@ -10,6 +12,7 @@ dnf install -yv \
 	nano \
 	screen \
 	ShellCheck \
+	smartmontools \
 	sysstat \
 	tcpdump \
 	thunderbird \
