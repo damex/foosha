@@ -1,0 +1,26 @@
+#!/bin/sh
+
+_user="$(who | awk '$1 !~ /root/ {print $1}')"
+
+for u in ${_user} ; do
+	_active_sink="$(sudo -u ${u} pactl list short sinks | awk '/RUNNING/ {print $1}')"
+
+	case ${1} in
+		volume-mute)
+			sudo -u "${u}" \
+				pactl set-sink-mute "${_active_sink}" toggle
+		;;
+		volume-down)
+			sudo -u "${u}" \
+				pactl set-sink-volume "${_active_sink}" -5%
+		;;
+		volume-up)
+			sudo -u "${u}" \
+				pactl set-sink-volume "${_active_sink}" +5%
+		;;
+		microphone-mute)
+			sudo -u "${u}" \
+				pactl set-source-mute 1 toggle
+		;;
+	esac
+done
