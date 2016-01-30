@@ -4,6 +4,7 @@
 
 dnf install -yv \
 	fping \
+	gpsd-clients \
 	hexchat \
 	iotop \
 	iperf \
