@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ "$(grep "level:" /proc/acpi/ibm/fan | awk '{print $2}')" = "disengaged" ]] ; then
+	echo "level auto" > "/proc/acpi/ibm/fan"
+else
+	echo "level disengaged" > "/proc/acpi/ibm/fan"
+fi
