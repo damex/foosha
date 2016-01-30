@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mount -t proc none proc
+mount --rbind /sys sys
+mount --rbind /dev dev
+cp /etc/resolv.conf etc/
+chroot . /bin/bash
