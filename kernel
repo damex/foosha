@@ -1,0 +1,11 @@
+#!/bin/sh
+
+[[ ! -d /boot/efi/boot ]] && mkdir -pv /boot/efi/boot
+
+_kernel_version="$(sed -n '3'p .config | awk '{print $3}')"
+
+make -j5 && \
+make modules_install && \
+make install && \
+cp -v ../better-initramfs/output/initramfs.cpio.gz /boot/initrd-${_kernel_version} && \
+grub2-mkconfig -o /boot/grub/grub.cfg
