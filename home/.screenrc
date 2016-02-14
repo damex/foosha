@@ -1,0 +1,5 @@
+hardstatus off
+caption always '%{= dg} %H %{G}| %{B}%l %{G}|%=%?%{d}%-w%?%{r}(%{d}%n %t%? {%u} %?%{r})%{d}%?%+w%?%=%{G}| %{B}%M %d %c:%s '
+defutf8 on
+utf8 on
+defscrollback 640000
