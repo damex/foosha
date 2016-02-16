@@ -1,0 +1,21 @@
+#!/sbin/runscript
+
+start() {
+	ebegin "Starting bashfan"
+
+	checkpath -q -d -m 0755 /run/bashfan
+
+	start-stop-daemon --start --background \
+		--exec /usr/sbin/bashfan \
+		--make-pidfile --pidfile /run/bashfan/bashfan.pid
+
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping bashfan"
+	start-stop-daemon --stop --quiet \
+		--exec /usr/sbin/bashfan \
+		--pidfile /run/bashfan/bashfan.pid
+	eend ${?}
+}

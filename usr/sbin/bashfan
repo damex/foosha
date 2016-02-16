@@ -1,0 +1,23 @@
+#!/bin/bash
+
+fan_level() { echo "level ${1}" > "/proc/acpi/ibm/fan" ; }
+
+while true ; do
+	_temperature="$(awk '{ sum += $1 } END { printf "%.0f", sum/NR/1000 }' /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp{2,3,4,5}_input)"
+
+	case ${_temperature} in
+		[1-4][0-9]) fan_level 1 ;;
+		5[0-9]) fan_level 2 ;;
+		6[0-5]) fan_level 3 ;;
+		6[6-9]) fan_level 4 ;;
+		7[0-5]) fan_level 5 ;;
+		7[6-9])	fan_level 6 ;;
+		8[0-5])	fan_level 7 ;;
+		8[5-9])	fan_level disengaged ;;
+                9[0-9]) fan_level disengaged ;;
+		[1-7][0-9]) echo "0" > "/sys/devices/system/cpu/intel_pstate/no_turbo" ;;
+		[8-9][0-9]) echo "1" > "/sys/devices/system/cpu/intel_pstate/no_turbo" ;;
+	esac
+
+	sleep 10
+done
