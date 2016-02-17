@@ -2,10 +2,11 @@
 
 [[ "$(whoami)" != "root" ]] && echo "Please get root privileges to deploy system configuration." && exit 1
 
-find \
-	/etc/udev/rules.d \
-	/etc/X11/xorg.conf.d \
-	-type f -exec rm -v {} \;
+find /etc/acpi -type f -exec rm -v {} \;
+cp -vR etc/acpi/* /etc/acpi
 
+find /etc/udev/rules.d -type f -exec rm -v {} \;
 cp -v etc/udev/rules.d/* /etc/udev/rules.d
+
+find /etc/X11/xorg.conf.d -type f -exec rm -v {} \;
 cp -v etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d
