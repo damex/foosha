@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ "$(whoami)" != "root" ]] && echo "Please get root privileges to deploy system configuration." && exit 1
+
 find \
 	/etc/udev/rules.d \
 	/etc/X11/xorg.conf.d \
