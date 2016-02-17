@@ -1,0 +1,9 @@
+#!/bin/bash
+
+find \
+	/etc/udev/rules.d \
+	/etc/X11/xorg.conf.d \
+	-type f -exec rm -v {} \;
+
+cp -v etc/udev/rules.d/* /etc/udev/rules.d
+cp -v etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d
