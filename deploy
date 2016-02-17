@@ -10,3 +10,6 @@ cp -v etc/udev/rules.d/* /etc/udev/rules.d
 
 find /etc/X11/xorg.conf.d -type f -exec rm -v {} \;
 cp -v etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d
+
+cp -v etc/init.d/bashfan /etc/init.d
+cp -v usr/sbin/bashfan /usr/sbin
