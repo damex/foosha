@@ -13,3 +13,5 @@ cp -v etc/X11/xorg.conf.d/* /etc/X11/xorg.conf.d
 
 cp -v etc/init.d/bashfan /etc/init.d
 cp -v usr/sbin/bashfan /usr/sbin
+
+cp -v etc/modprobe.d/* /etc/modprobe.d
