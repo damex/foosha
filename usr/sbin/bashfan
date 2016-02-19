@@ -3,22 +3,21 @@
 [[ "$(whoami)" != "root" ]] && echo "Please get root privileges to use bashfan script." && exit 1
 
 fan_level() { echo "level ${1}" > "/proc/acpi/ibm/fan" ; }
+disable_turbo() { echo "${1}" > "/sys/devices/system/cpu/intel_pstate/no_turbo" ; }
 
 while true ; do
 	_temperature="$(awk '{ sum += $1 } END { printf "%.0f", sum/NR/1000 }' /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp{2,3,4,5}_input)"
 
 	case ${_temperature} in
-		[1-4][0-9]) fan_level 1 ;;
-		5[0-9]) fan_level 2 ;;
-		6[0-5]) fan_level 3 ;;
-		6[6-9]) fan_level 4 ;;
-		7[0-5]) fan_level 5 ;;
-		7[6-9])	fan_level 6 ;;
-		8[0-5])	fan_level 7 ;;
-		8[5-9])	fan_level disengaged ;;
-                9[0-9]) fan_level disengaged ;;
-		[1-7][0-9]) echo "0" > "/sys/devices/system/cpu/intel_pstate/no_turbo" ;;
-		[8-9][0-9]) echo "1" > "/sys/devices/system/cpu/intel_pstate/no_turbo" ;;
+		[1-4][0-9]) fan_level 1 && disable_turbo 0 ;;
+		5[0-9])	fan_level 2 && disable_turbo 0 ;;
+		6[0-5]) fan_level 3 && disable_turbo 0 ;;
+		6[6-9]) fan_level 4 && disable_turbo 0 ;;
+		7[0-5]) fan_level 5 && disable_turbo 0 ;;
+		7[6-9])	fan_level 6 && disable_turbo 0 ;;
+		8[0-5])	fan_level 7 && disable_turbo 0 ;;
+		8[5-9])	fan_level disengaged && disable_turbo 1 ;;
+                9[0-9]) fan_level disengaged && disable_turbo 1 ;;
 	esac
 
 	sleep 10
