@@ -16,7 +16,7 @@ while true ; do
 		7[0-5]) fan_level 5 && disable_turbo 0 ;;
 		7[6-9])	fan_level 6 && disable_turbo 0 ;;
 		8[0-5])	fan_level 7 && disable_turbo 0 ;;
-		8[5-9])	fan_level disengaged && disable_turbo 1 ;;
+		8[6-9])	fan_level disengaged && disable_turbo 1 ;;
                 9[0-9]) fan_level disengaged && disable_turbo 1 ;;
 	esac
 
