@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ "$(whoami)" != "root" ]] && echo "Please get root privileges to use bashfan script." && exit 1
+
 fan_level() { echo "level ${1}" > "/proc/acpi/ibm/fan" ; }
 
 while true ; do
