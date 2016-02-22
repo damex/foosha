@@ -1,2 +1,2 @@
-SUBSYSTEM=="serio", DRIVERS=="psmouse", WAIT_FOR="/sys/devices/platform/i8042/serio1/serio2/sensitivity", ATTR{sensitivity}="192"
-SUBSYSTEM=="serio", DRIVERS=="psmouse", WAIT_FOR="/sys/devices/platform/i8042/serio1/serio2/speed", ATTR{speed}="128"
+SUBSYSTEM=="serio", DRIVERS=="psmouse", KERNEL=="serio2", ATTR{sensitivity}="192"
+SUBSYSTEM=="serio", DRIVERS=="psmouse", KERNEL=="serio2", ATTR{speed}="128"
