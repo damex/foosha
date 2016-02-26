@@ -1,2 +1,1 @@
-SUBSYSTEM=="serio", DRIVERS=="psmouse", KERNEL=="serio2", ATTR{sensitivity}="192"
-SUBSYSTEM=="serio", DRIVERS=="psmouse", KERNEL=="serio2", ATTR{speed}="128"
+SUBSYSTEM=="serio", DRIVERS=="psmouse", KERNEL=="serio2", WAIT_FOR="speed", WAIT_FOR="sensitivity", ATTR{sensitivity}="192", ATTR{speed}="128"
