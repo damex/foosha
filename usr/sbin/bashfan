@@ -6,7 +6,8 @@ fan_level() { echo "level ${1}" > "/proc/acpi/ibm/fan" ; }
 disable_turbo() { echo "${1}" > "/sys/devices/system/cpu/intel_pstate/no_turbo" ; }
 
 while true ; do
-	_temperature="$(awk '{ sum += $1 } END { printf "%.0f", sum/NR/1000 }' /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp{2,3,4,5}_input)"
+	_temperature="$(awk '{ sum += $1 } END { printf "%.0f", sum/NR/1000 }' \
+		$(find /sys/devices/platform/coretemp.0/hwmon/hwmon2 -maxdepth 1 -name "temp[0-9]_input"))"
 
 	case ${_temperature} in
 		[1-4][0-9]) fan_level 1 && disable_turbo 0 ;;
