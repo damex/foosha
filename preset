@@ -1,3 +1,11 @@
 #!/bin/sh
 
-chsh -s /bin/zsh
+_user="damex"
+
+chsh -s /bin/zsh "${_user}"
+
+chown -Rv "${_user}" ~/.ssh
+find ~/.ssh -type d -exec chmod -v 0700 {} \;
+find ~/.ssh -type f -exec chmod -v 0600 {} \;
+
+./deploy
