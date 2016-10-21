@@ -1,31 +1,66 @@
 #!/bin/sh
 
 sudo apt-get update && \
-	sudo apt-get upgrade -y && \
-	sudo apt-get dist-upgrade -y && \
-	sudo apt-get install -y \
-		adobe-flashplugin \
-		enca \
-		fping \
-		git \
-		hexchat \
-		i2c-tools \
-		iotop \
-		iperf \
-		lm-sensors \
-		mc \
-		network-manager-openvpn-gnome \
-		powertop \
-		python-pygments \
-		rxvt-unicode \
-		screen \
-		shellcheck \
-		skype \
-		sysstat \
-		subversion \
-		xfonts-terminus \
-		tcpdump \
-		vlc \
-		wireshark \
-		zsh \
-		|| exit 1
+sudo apt-get upgrade -y && \
+sudo apt-get dist-upgrade -y && \
+sudo apt-get install -y \
+	adb \
+	aria2 \
+	audacity \
+	chromium-browser \
+	comix \
+	cryptsetup \
+	default-jdk \
+	dh-autoreconf \
+	dsh \
+	enca \
+	fastboot \
+	flashrom \
+	fping \
+	gimp \
+	git \
+	hexchat \
+	iasl \
+	i2c-tools \
+	iotop \
+	iperf \
+	keepass2 \
+	libbz2-dev \
+	liblzo2-dev \
+	libncurses5-dev \
+	linssid \
+	lm-sensors \
+	lrzip \
+	mc \
+	mesa-utils \
+	network-manager-openvpn-gnome \
+	p7zip-full \
+	pidgin \
+	powertop \
+	rxvt-unicode \
+	s3cmd \
+	screen \
+	shellcheck \
+	skype \
+	smartmontools \
+	sshpass \
+	sysstat \
+	subversion \
+	tcpdump \
+	tp-smapi-dkms \
+	traceroute \
+	vlc \
+	whois \
+	wireshark \
+	xfonts-terminus \
+	xul-ext-lightning \
+	wine \
+	zsh && \
+sudo apt-get install -y \
+	$(check-language-support -l en) \
+	$(check-language-support -l ru) \
+	$(check-language-support -l ja) \
+	|| exit 1
+
+
+# sudo add-apt-repository ppa:starws-box/deadbeef-player && sudo apt-get update && sudo apt-get install deadbeef
